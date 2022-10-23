@@ -1,0 +1,8 @@
+stack  is a linear data stucture which follows a particular order in which operations are performed
+The  order is LIFO(last in first out)
+Mainly three basic operations
+1.push
+2.pop:
+3.peek:get the topmost item
+If stack is full then overflow condition
+If it is empty then underflow condition

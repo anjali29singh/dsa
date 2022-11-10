@@ -23,15 +23,21 @@ int main()
         adj[v].push_back(u);
     }
     int visited[n + 1] = {0};
+    int cnt = 0;
+    vector<int> ans;
     for (int i = 1; i <= n; i++)
     {
         if (visited[i] == 0)
         {
             dfs(adj, visited, i);
-            for (int i = 1; i <= n; i++)
-                cout << visited[i] << endl;
+
+            ans.push_back(i);
+            cnt = cnt + 1;
         }
     }
+    cout << cnt - 1 << endl;
+    for (int i = 0; i < cnt - 1; i++)
+        cout << ans[i] << " " << ans[i + 1] << endl;
 
     return 0;
 }

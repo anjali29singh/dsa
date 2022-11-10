@@ -7,9 +7,10 @@ bool isCycle(vector<int> adj[], int visited[], int node, int parent)
     for (auto v : adj[node])
     {
         if (!visited[v])
-            isCycle(adj, visited, v, node);
-        else if (v != parent)
-            return true;
+            if (isCycle(adj, visited, v, node))
+                return true;
+            else if (v != parent)
+                return true;
     }
     return false;
 }

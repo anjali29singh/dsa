@@ -36,6 +36,7 @@ int main()
         int u, v, wt;
         cin >> u >> v >> wt;
         adj[u].push_back(make_pair(v, wt));
+        adj[v].push_back(make_pair(u, wt));
     }
     int dist[N + 1]{0};
     for (int i = 0; i <= N; i++)

@@ -7,7 +7,10 @@ int main()
     int n, m;
     cin >> n >> m;
     vector<int> adj[n];
-    int vis[n] = {};
+
+    int vis[n];
+    for (int i = 0; i < n; i++)
+        vis[i] = 0;
 
     for (int i = 0; i < m; i++)
     {
@@ -25,7 +28,7 @@ int main()
     while (!q.empty())
     {
         int node = q.front();
-        cout << node << " ";
+
         q.pop();
         for (auto it : adj[node])
         {

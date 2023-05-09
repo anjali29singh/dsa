@@ -22,7 +22,9 @@ int main()
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-    int visited[n + 1] = {0};
+    int visited[n + 1];
+    for (int i = 0; i < n + 1; i++)
+        visited[i] = 0;
     for (int i = 1; i <= n; i++)
     {
         if (visited[i] == 0)

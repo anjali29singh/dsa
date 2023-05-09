@@ -9,7 +9,10 @@ int main()
         int n, m;
         cin >> n >> m;
         vector<int> adj[n + 1];
-        int vis[n + 1] = {0};
+        int vis[n + 1];
+        for (int i = 0; i < n + 1; i++)
+            vis[i] = 0;
+
         for (int i = 0; i < m; i++)
         {
             int u, v;
@@ -17,7 +20,7 @@ int main()
             adj[u].push_back(v);
             adj[v].push_back(u);
         }
-        int s;
+        int s; // starting point
         cin >> s;
         queue<pair<int, int>> q;
         int shortdist[n + 1];

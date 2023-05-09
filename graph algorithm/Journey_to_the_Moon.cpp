@@ -25,7 +25,9 @@ int main()
         adj[x].push_back(y);
         adj[y].push_back(x);
     }
-    long long vist[n] = {0};
+    long long vist[n];
+    for (long long i = 0; i < n; i++)
+        vist[i] = 0;
     vector<long long> count;
     for (long long i = 0; i < n; i++)
     {

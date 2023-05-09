@@ -5,7 +5,9 @@ int main()
     int N, M;
     cin >> N >> M;
     vector<int> adj[N + 1];
-    int indegree[N + 1] = {0};
+    int indegree[N + 1];
+    for (int i = 0; i < N; i++)
+        indegree[i] = 0;
 
     for (int i = 0; i < M; i++)
     {

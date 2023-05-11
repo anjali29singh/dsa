@@ -30,7 +30,11 @@ int main()
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-    int color[N + 1] = {-1};
+    int color[N + 1];
+    for (int i = 0; i < N + 1; i++)
+    {
+        color[i] = -1;
+    }
     for (int i = 1; i <= N; i++)
         color[i] = -1;
     bool bipartite = true;

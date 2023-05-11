@@ -26,7 +26,12 @@ int main()
         cin >> u >> v >> wt;
         adj[u].push_back(make_pair(v, wt));
     }
-    int visited[N + 1] = {0};
+    int visited[N + 1];
+    for (int i = 0; i < N + 1; i++)
+    {
+
+        visited[i] = 0;
+    }
     stack<int> stack;
     int distance[N + 1];
     for (int i = 0; i <= N; i++)

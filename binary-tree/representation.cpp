@@ -4,8 +4,8 @@ using namespace std;
 struct node
 {
     int data;
-    struct node *left;
-    struct node *right;
+    node *left;
+    node *right;
 
     // create new node
     node(int val)

@@ -1,4 +1,4 @@
-// InorderTraversal current-left-right
+// preorder Traversal current-left-right
 
 #include <bits/stdc++.h>
 using namespace std;

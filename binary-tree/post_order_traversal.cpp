@@ -1,7 +1,5 @@
 // post-order-traversal  left-right-current
 
-// InorderTraversal left-current-right
-
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -81,4 +81,5 @@ int main()
     root->left->right = newNode(5);
 
     cout << "Height(Depth) of tree is: " << height(root);
+    return 0;
 }

@@ -40,6 +40,24 @@ int sum(int v, int tl, int tr, int l, int r)
     return leftPartial + rightPartial;
 }
 
+void update(int v, int tl, int tr, int pos, int val)
+{
+    if (tl == tr)
+    {
+        T[v] = val;
+    }
+
+    else
+    {
+        int tm = (tl + tr) / 2;
+        if (pos <= tm)
+            update(2 * v, tl, tm, pos, val); // search position in left child;
+        else
+            update((2 * v) + 1, tm + 1, tr, pos, val);
+
+        T[v] = T[v * 2] + T[(v * 2) + 1];
+    }
+}
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -50,15 +68,31 @@ int main()
     {
         cin >> a[i];
     }
-    int l, r;
+    int l, r, pos, x;
+
+    cout << "enter the query range" << endl;
+
     cin >> l >> r;
+
     build(a, 1, 0, n - 1);
+
     // assuming zero base indexing ;
     int ans = sum(1, 0, n - 1, l, r);
 
-    cout << ans << '\n';
-    for (int i = 0; i < 4 * n; i++)
-        cout << T[i] << " ";
-    cout << '\n';
+    cout << "sum is : ";
+    cout << ans << endl;
+
+    cout << "enter position and value to update:" << endl;
+
+    cin >> pos >> x;
+
+    update(1, 0, n - 1, pos, x);
+
+    int updateSum = sum(1, 0, n - 1, l, r);
+
+    cout << "Sum after update is: ";
+
+    cout << updateSum << '\n';
+
     return 0;
 }

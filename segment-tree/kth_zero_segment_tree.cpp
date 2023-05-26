@@ -74,9 +74,9 @@ int find_kth(int v, int tl, int tr, int k)
 
     int tm = (tl + tr) / 2;
     if (T[2 * v] >= k)
-        find_kth(2 * v, tl, tm, k);
+        return find_kth(2 * v, tl, tm, k);
     else
-        find_kth(2 * v, tm + 1, tr, k - T[2 * v]);
+        return find_kth(2 * v, tm + 1, tr, k - T[2 * v]);
 }
 int main()
 {

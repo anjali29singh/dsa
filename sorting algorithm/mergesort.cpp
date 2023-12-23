@@ -1,59 +1,62 @@
 #include <bits/stdc++.h>
 using namespace std;
-void merge_sort(int arr[], int n)
+
+void merge(int low, int mid, int high, vector<int> &arr)
 {
 
-    if (n > 1)
+    vector<int> temp;
+
+    int l = low, r = mid + 1;
+
+    while (l <= mid && r <= high)
     {
-        int mid = n / 2;
-        int left_arr[mid], right_arr[n - mid];
-
-        for (int i = 0; i < mid; i++)
-
-            left_arr[i] = arr[i];
-
-        for (int j = 0; j < n - mid; j++)
-
-            right_arr[j] = arr[mid + j];
-
-        merge_sort(left_arr, mid);
-
-        merge_sort(right_arr, n - mid);
-
-        int i = 0, j = 0, k = 0;
-
-        while (i < mid && j < n - mid)
+        if (arr[l] <= arr[r])
         {
-            if (left_arr[i] < right_arr[j])
-            {
-                arr[k] = left_arr[i]; // overwriting in array
-                i = i + 1;
-            }
-            else
-            {
-                arr[k] = right_arr[j];
-                j = j + 1;
-            }
-            k = k + 1;
+
+            temp.push_back(arr[l]);
+            l++;
         }
-        while (i < mid)
+        else
         {
-            arr[k] = left_arr[i];
-            i = i + 1;
-            k = k + 1;
-        }
-        while (j < n - mid)
-        {
-            arr[k] = right_arr[j];
-            j = j + 1;
-            k = k + 1;
+            temp.push_back(arr[r]);
+            r++;
         }
     }
+    while (l <= mid)
+    {
+        temp.push_back(arr[l]);
+        l++;
+    }
+    while (r <= high)
+    {
+        temp.push_back(arr[r]);
+        r++;
+    }
+
+    for (int i = 0; i < temp.size(); i++)
+    {
+        arr[low + i] = temp[i];
+    }
+}
+void merge_sort(int low, int high, vector<int> &arr)
+{
+
+    if (low >= high)
+        return;
+
+    int mid = (low + high) / 2;
+
+    merge_sort(low, mid, arr);
+
+    merge_sort(mid + 1, high, arr);
+
+    merge(low, mid, high, arr);
 }
 int main()
 {
-    int arr[8] = {8, 7, 6, 5, 4, 3, 2, 1};
-    merge_sort(arr, 8);
+
+    vector<int> arr = {1, 3, 5, 7, 4, 2, 6, 8};
+    merge_sort(0, 8, arr);
     for (int i = 0; i < 8; i++)
         cout << arr[i] << endl;
     return 0;

@@ -1,25 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main(){
-    int m,n;
-    cin>>m>>n;
-    int s[m];
-    for (int i=0;i<m;i++)
-        cin>>s[i];
-    int long long dp[m+1][n+1];
-     dp[0][0]=1;
-    for (int i=0;i<=m;i++){
-        for (int j=0;j<=n;j++){
-             if (j==0)
-                dp[i][j]=1;
-            else if (i==0)
-                dp[i][j]=0;
-            else if (s[i-1]>j) 
-                dp[i][j]=dp[i-1][j];
-            else   
-                dp[i][j]=dp[i-1][j]+dp[i][j-s[i-1]];
+
+int getVowelNo(char c)
+{
+
+    if (c == 'a')
+        return 0;
+    if (c == 'e')
+        return 1;
+    if (c == 'i')
+        return 2;
+    if (c == 'o')
+        return 3;
+    if (c == 'u')
+        return 4;
+
+    return -1;
+}
+int main()
+{
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    vector<vector<int>> dp(n, vector<int>(5, 0));
+
+    if (s[0] == 'a')
+        dp[0][0] = 1;
+    for (int i = 1; i < n; i++)
+    {
+
+        int x = getVowelNo(s[i]);
+
+        if (x == -1)
+            dp[i] = dp[i - 1];
+        else
+        {
+            dp[i] = dp[i - 1];
+            if (x > 0)
+                dp[i][x] = max(dp[i][x], dp[i - 1][x - 1] + 1);
+
+            dp[i][x] = max(dp[i][x], dp[i - 1][x] + 1);
         }
     }
-    cout<<dp[m][n]<<endl;
+
+    cout << dp[n - 1][4] << endl;
+
     return 0;
 }

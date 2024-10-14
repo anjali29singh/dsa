@@ -1,0 +1,1 @@
+// We have an array arr[0 ...n - 1].We should be able to efficiently find the minimum value from index L(query start) to R(query end) where 0 <= L <= R <= n - 1.

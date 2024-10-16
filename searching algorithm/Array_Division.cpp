@@ -1,7 +1,6 @@
 #include "bits/stdc++.h"
 using namespace std;
 #define ll long long
-
 int subarray(int ll a[], int n, int k, int ll mid)
 {
     int cnt = 1;
